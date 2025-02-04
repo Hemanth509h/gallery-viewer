@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expanding Label</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.329);
+        }
+
+        .mainbody {
+            display: flex;
+            gap: 10px;
+        }
+
+        .mainbody2 {
+            display: flex;
+            gap: 10px;
+        }
+
+        .expand-box,
+        .expand-box2,
+        .expand-box3,
+        .expand-box4 {
+            background-image: url('https://images.unsplash.com/photo-1517054612019-1bf855127c43?ixlib=rb-0.3.5');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+            border-radius: 35px;
+            cursor: pointer;
+            transition: width 0.5s ease-in-out, height 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+            display: flex;
+            align-items: end;
+            justify-content: start;
+            font-size: 24px;
+            font-weight: bold;
+            padding-bottom: 10px;
+            overflow: hidden;
+        }
+
+        .expand-box.expanded,
+        .expand-box2.expanded,
+        .expand-box3.expanded,
+        .expand-box4.expanded {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 450px;
+            height: 350px;
+            border: 10px solid rgb(109, 108, 108);
+        }
+
+        .expand-box {
+            background-color: blue;
+            width: 90px;
+            height: 300px;
+        }
+
+        .expand-box2 {
+            width: 90px;
+            height: 300px;
+            background-color: green;
+        }
+
+        .expand-box3 {
+            background-color: red;
+            width: 90px;
+            height: 300px;
+        }
+
+        .expand-box4 {
+            background-color: red;
+            width: 90px;
+            height: 300px;
+        }
+
+
+        .numberlabel,
+        .numberlabel2,
+        .numberlabel3,
+        .numberlabel4 {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(0, 0, 0);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 20px;
+            margin-left: 20px;
+        }
+
+        .information,
+        .information2,
+        .information3,
+        .information4 {
+            opacity: 0;
+            transform: translateX(100px);
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 10px;
+            white-space: nowrap;
+        }
+
+        .expand-box.expanded {
+            width: 450px;
+            height: 350px;
+
+        }
+
+        .expand-box.expanded .information {
+            opacity: 1;
+            transform: translateX(0px);
+        }
+
+        .expand-box2.expanded {
+            width: 450px;
+            height: 350px;
+
+        }
+
+        .expand-box2.expanded .information2 {
+            opacity: 1;
+            transform: translateX(0px);
+        }
+
+        .expand-box3.expanded {
+            width: 450px;
+            height: 350px;
+        }
+
+        .expand-box3.expanded .information3 {
+            opacity: 1;
+            transform: translateX(0px);
+        }
+
+        .expand-box4.expanded {
+            width: 450px;
+            height: 350px;
+        }
+
+        .expand-box4.expanded .information4 {
+            opacity: 1;
+            transform: translateX(0px);
+        }
+
+        .discripton {
+            display: flex;
+            gap: 10px;
+        }
+
+        .main {
+            width: 500px;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 30px;
+            padding-left: 10px;
+            border-radius: 30px;
+            overflow: hidden;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="mainbody">
+            <div class="expand-box" id="expand-box">
+                <div class="discripton">
+                    <div class="numberlabel">1</div>
+                    <div class="information">This is nature</div>
+                </div>
+            </div>
+            <div class="expand-box2" id="expand-box2">
+                <div class="discripton">
+                    <div class="numberlabel2">2</div>
+                    <div class="information2">This is nature</div>
+                </div>
+            </div>
+        </div>
+        <div class="mainbody2">
+            <div class="expand-box3" id="expand-box3">
+                <div class="discripton">
+                    <div class="numberlabel3">3</div>
+                    <div class="information3">This is nature</div>
+                </div>
+            </div>
+            <div class="expand-box4" id="expand-box4">
+                <div class="discripton">
+                    <div class="numberlabel4">4</div>
+                    <div class="information4">This is nature</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll(".expand-box, .expand-box2, .expand-box3, .expand-box4").forEach(box => {
+            box.addEventListener("click", function () {
+                // Collapse all boxes first
+                document.querySelectorAll(".expand-box, .expand-box2, .expand-box3, .expand-box4").forEach(b => {
+                    if (b !== this) {
+                        b.classList.remove("expanded");
+                    }
+                });
+
+                // Expand the clicked box
+                this.classList.toggle("expanded");
+            });
+        });
+
+    </script>
+
+</body>
+
+</html>
